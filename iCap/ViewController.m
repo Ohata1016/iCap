@@ -44,8 +44,8 @@
     [self.view addSubview:self.scroller];
     
     //addGestures
-    [self addSingleFingerDoubleTapGesture];
-    [self addSingleFingerTapGesture];
+    //[self addSingleFingerDoubleTapGesture];
+    //[self addSingleFingerTapGesture];
     [self addDoubleFingerTaoGesture];
     [self addLeftSwipeGesture];
     [self addRightSwipeGesture];
