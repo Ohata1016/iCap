@@ -16,17 +16,12 @@
 
 @implementation MusicImage
 {
-    UITapGestureRecognizer *singleFingerTap;
-    UITapGestureRecognizer *doubleFingerTap;
-    UILongPressGestureRecognizer *longPressGesture;
-    UIPinchGestureRecognizer *pinchGesture;
     UITapGestureRecognizer *singleFingerDoubleTap;
     UITapGestureRecognizer *tripleTapGesture;
     UISwipeGestureRecognizer *rightSwipeGesture;
     UISwipeGestureRecognizer *leftSwipeGesture;
     UISwipeGestureRecognizer *upSwipeGesture;
     UISwipeGestureRecognizer *downSwipeGesture;
-    UIPanGestureRecognizer *panGesture;
     
     CGAffineTransform currentTrans;
     CGRect beforeFrame;
@@ -83,8 +78,8 @@
 
 
 -(void)addSingleFingerTapGesture{
-    singleFingerTap = [[UITapGestureRecognizer alloc]
-                       initWithTarget:self  action:@selector(handleSingleTap:)];
+    UITapGestureRecognizer *singleFingerTap;
+    singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(handleSingleTap:)];
     [self addGestureRecognizer:singleFingerTap];
     [singleFingerTap requireGestureRecognizerToFail:singleFingerDoubleTap];//ダブルタップが呼ばれないことを確認する
 }
@@ -115,6 +110,7 @@
 }
 
 -(void)addLongTapGesture{
+    UILongPressGestureRecognizer *longPressGesture;
     //ロングタップジェスチャの追加
     longPressGesture =
     [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPres:)];
@@ -125,6 +121,7 @@
 }
 
 -(void)addPinchGesture{
+    UIPinchGestureRecognizer *pinchGesture;
     //ピンチジェスチャ-のインスタンス作成
     pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
     //ピンチジェスチャの追加
@@ -132,6 +129,7 @@
 }
 
 -(void)addPanGesture{
+    UIPanGestureRecognizer *panGesture;
     panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
     [self addGestureRecognizer:panGesture];
     [panGesture requireGestureRecognizerToFail:rightSwipeGesture];
@@ -142,20 +140,12 @@
     saveData.musicArray = musicArray;
     saveData.bounds = CGRectMake(self.frame.origin.x,self.frame.origin.y,self.frame.size.width,self.frame.size.height);
     saveData.albumName = _albumName;
-    
-    NSLog(@"updata savedata:%@",saveData);
-    NSLog(@"updata labeldata:%@",saveData.albumName);
-   // NSLog(@"save bounds:%f:%f;%f:%f",saveData.bounds.origin.x,saveData.bounds.origin.y,saveData.bounds.size.width,saveData.bounds.size.height);
-  //  NSLog(@"saved musicArray:%@",saveData.musicArray);
-   // NSLog(@"self musicArray:%@",musicArray);
 }
 
 -(void)changeImage{//曲が変わったら実行される 親から呼び出される
     if([self.superview viewWithTag:self.tag + PLAYINGFRAME]!=nil && [musicArray count] >1){
-            NSLog(@" not nil album artwork");
             self.image = [[[self getSuperview].player.nowPlayingItem valueForProperty:MPMediaItemPropertyArtwork] imageWithSize:CGSizeMake(self.frame.size.width,self.frame.size.height)];
         if(self.image == nil) {
-            NSLog(@" nil album artwork");
             self.image = [UIImage imageNamed:@"albumDefault.jpg"];
         }
         [self deletePlayingItemLabel];
@@ -175,7 +165,6 @@
         CGPoint location = [sender translationInView:self];
         CGPoint movePoint = CGPointMake(self.center.x+location.x,self.center.y+location.y);
         
-        NSLog(@"locationx:%f location:%f",location.x,location.y);
         movePoint = [self checkPoint:movePoint];
         
         self.center = movePoint;

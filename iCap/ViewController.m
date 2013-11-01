@@ -11,6 +11,7 @@
 #import "MusicSaveData.h"
 #import "SuperView.h"
 #import "EffectSoundBox.h"
+#import "PhotoLibraryAccesser.h"
 
 @implementation ViewController
 {
@@ -45,7 +46,7 @@
     
     //addGestures
     //[self addSingleFingerDoubleTapGesture];
-    //[self addSingleFingerTapGesture];
+    [self addSingleFingerTapGesture];
     [self addDoubleFingerTaoGesture];
     [self addLeftSwipeGesture];
     [self addRightSwipeGesture];
@@ -74,18 +75,20 @@
     return [_scroller getSubview];;
 }
 
+//一本指ジェスチャの追加
 -(void)addSingleFingerTapGesture{
     singleFingerTap = [[UITapGestureRecognizer alloc]
-                       initWithTarget:self  action:@selector(handleSingleTap:)];
+                       initWithTarget:self  action:@selector(singleTapAction:)];
     [self.scroller addGestureRecognizer:singleFingerTap];
-    [singleFingerTap requireGestureRecognizerToFail:singleFingerDoubleTap];//ダブルタップが呼ばれないことを確認する
+//    [singleFingerTap requireGestureRecognizerToFail:singleFingerDoubleTap];//ダブルタップが呼ばれないことを確認する
 }
 
+//一本指ダブルタップs
 -(void)addSingleFingerDoubleTapGesture{
     singleFingerDoubleTap = [[UITapGestureRecognizer alloc]
                              initWithTarget:self  action:@selector(handleSingleDoubleTap:)];
     singleFingerDoubleTap.numberOfTapsRequired = 2;
-    [self.scroller addGestureRecognizer:singleFingerDoubleTap];
+  //  [self.scroller addGestureRecognizer:singleFingerDoubleTap];
 }
 
 -(void)addDoubleFingerTaoGesture{
@@ -123,8 +126,6 @@
     [rotationGesture requireGestureRecognizerToFail:rightSwipeGesture];
     [rotationGesture requireGestureRecognizerToFail:leftSwipeGesture];
     [self.scroller addGestureRecognizer:rotationGesture];
-    
-    
 }
 
 -(void)readSaveData{
@@ -144,6 +145,7 @@
     self.scroller.transform = CGAffineTransformMakeRotation(selRotationGesture.rotation);
     
 }
+
 -(void)handleSingleDoubleTap:(UIGestureRecognizer *)sender{    //アルバム作成　Musicライブラリにアクセスし、選択楽曲をスクローラに貼り付ける
     makeAlbum = YES;
     if(sender.state  == UIGestureRecognizerStateEnded){
@@ -183,7 +185,7 @@
         if(self.view.tag < [appDelegate.canvasViewControllerList count]){//ViewControllerを変更する
             ViewController *cnt= (ViewController *)[appDelegate.canvasViewControllerList objectAtIndex:self.view.tag];
             [appDelegate.window bringSubviewToFront:cnt.view];//別のコントローラの持つビューを全面へ持ってくる　つまり変更
-//            NSLog(@"change view controller tag:%@",cnt.view);
+            
             [self.view.window sendSubviewToBack:self.view];//自身を後ろへ
             appDelegate.window.rootViewController = cnt;//ビューコントローラの変更
         }else{
@@ -253,6 +255,25 @@
         }];
         }
     }
+}
+
+-(void)singleTapAction:(UIGestureRecognizer *)sender{
+    
+    //大本のimageを追加する
+    UIImageView *img = [[UIImageView alloc] init];
+    CGPoint p = [sender locationInView:scrollerView];
+    img.frame = CGRectMake(p.x, p.y, 100, 100);
+    img.userInteractionEnabled = YES;
+    //ライブラリアクセス用のクラス
+    img.tag = img.hash;
+    PhotoLibraryAccesser *accesser = [[PhotoLibraryAccesser alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [accesser setViewController:self];
+    [img addSubview:accesser];
+    [self.scroller.getSubview addSubview:img];
+//    [img addSubview:accesser];
+    //ミュージックライブラリ用の
+
+
 }
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)sender{//ダブルタップ時の処理　フォトアルバムへアクセス　壁紙を設定

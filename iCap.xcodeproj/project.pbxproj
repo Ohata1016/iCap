@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		671A97D717CB30CF007AB316 /* albumDefault.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 671A97D617CB30CF007AB316 /* albumDefault.jpg */; };
+		67779A28181FBB160014DDC3 /* PhotoLibraryAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */; };
+		67779A2B181FBC150014DDC3 /* PhotoLibraryAccessHundler.m in Sources */ = {isa = PBXBuildFile; fileRef = 67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */; };
 		6786362217CB2ECC00CE573C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6786362117CB2ECC00CE573C /* UIKit.framework */; };
 		6786362417CB2ECC00CE573C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6786362317CB2ECC00CE573C /* Foundation.framework */; };
 		6786362617CB2ECC00CE573C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6786362517CB2ECC00CE573C /* CoreGraphics.framework */; };
@@ -40,6 +42,7 @@
 		67B38AFF17CB332A006B9683 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B38AFA17CB332A006B9683 /* ViewController.m */; };
 		67B38B0117CB334D006B9683 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B38B0017CB334D006B9683 /* Icon2.png */; };
 		67B38B0317CB3353006B9683 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B38B0217CB3353006B9683 /* Icon.png */; };
+		67DDC3F218236E3C00BD0BD8 /* IcImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC3F118236E3C00BD0BD8 /* IcImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,10 @@
 
 /* Begin PBXFileReference section */
 		671A97D617CB30CF007AB316 /* albumDefault.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = albumDefault.jpg; sourceTree = "<group>"; };
+		67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryAccesser.h; sourceTree = "<group>"; };
+		67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryAccesser.m; sourceTree = "<group>"; };
+		67779A29181FBC150014DDC3 /* PhotoLibraryAccessHundler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryAccessHundler.h; sourceTree = "<group>"; };
+		67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryAccessHundler.m; sourceTree = "<group>"; };
 		6786361E17CB2ECC00CE573C /* iCap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6786362117CB2ECC00CE573C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6786362317CB2ECC00CE573C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +109,8 @@
 		67B38AFA17CB332A006B9683 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		67B38B0017CB334D006B9683 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
 		67B38B0217CB3353006B9683 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		67DDC3F018236E3C00BD0BD8 /* IcImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcImageView.h; sourceTree = "<group>"; };
+		67DDC3F118236E3C00BD0BD8 /* IcImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +191,8 @@
 				67B38AE717CB32EB006B9683 /* EffectSoundBox.m */,
 				67B38AE917CB3313006B9683 /* MusicImage.h */,
 				67B38AEA17CB3313006B9683 /* MusicImage.m */,
+				67DDC3F018236E3C00BD0BD8 /* IcImageView.h */,
+				67DDC3F118236E3C00BD0BD8 /* IcImageView.m */,
 				67B38AEB17CB3313006B9683 /* MusicSaveData.h */,
 				67B38AEC17CB3313006B9683 /* MusicSaveData.m */,
 				67B38AEF17CB3320006B9683 /* MyScrollView.h */,
@@ -189,12 +200,16 @@
 				67B38AF217CB332A006B9683 /* RedFrame.h */,
 				67B38AF317CB332A006B9683 /* RedFrame.m */,
 				67B38AF417CB332A006B9683 /* redFrame.png */,
+				67779A29181FBC150014DDC3 /* PhotoLibraryAccessHundler.h */,
+				67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */,
 				67B38AF517CB332A006B9683 /* skipSongBottun.h */,
 				67B38AF617CB332A006B9683 /* skipSongBottun.m */,
 				67B38AF717CB332A006B9683 /* SuperView.h */,
 				67B38AF817CB332A006B9683 /* SuperView.m */,
 				67B38AF917CB332A006B9683 /* ViewController.h */,
 				67B38AFA17CB332A006B9683 /* ViewController.m */,
+				67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */,
+				67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */,
 				6786363917CB2ECC00CE573C /* MainStoryboard.storyboard */,
 				6786362817CB2ECC00CE573C /* Supporting Files */,
 			);
@@ -349,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67DDC3F218236E3C00BD0BD8 /* IcImageView.m in Sources */,
 				6786362E17CB2ECC00CE573C /* main.m in Sources */,
 				67B38ADD17CB32C9006B9683 /* AllDeleter.m in Sources */,
 				67B38AE017CB32D1006B9683 /* AppDelegate.m in Sources */,
@@ -361,6 +377,8 @@
 				67B38AFD17CB332A006B9683 /* skipSongBottun.m in Sources */,
 				67B38AFE17CB332A006B9683 /* SuperView.m in Sources */,
 				67B38AFF17CB332A006B9683 /* ViewController.m in Sources */,
+				67779A28181FBB160014DDC3 /* PhotoLibraryAccesser.m in Sources */,
+				67779A2B181FBC150014DDC3 /* PhotoLibraryAccessHundler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

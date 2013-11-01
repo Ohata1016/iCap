@@ -28,6 +28,7 @@
         [self addSubview:initView];
         [self setCanCancelContentTouches:NO];
         
+        
         self.backgroundColor = [UIColor whiteColor];
         self.contentSize = CGSizeMake(scrollFrame.size.width,scrollFrame.size.height);
         

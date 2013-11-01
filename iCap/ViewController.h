@@ -16,7 +16,7 @@
 #define OPENLIBRARYSOUNDNUM 1100//iphoneシステムサウンドの番号
 #define CLOSELIBRARYSOUNDNUM 1101
 
-@interface ViewController : UIViewController<UIScrollViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NSCoding,MyScrollViewDelegate>
+@interface ViewController : UIViewController<MPMediaPickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NSCoding,MyScrollViewDelegate>
 
 @property (nonatomic,strong)MyScrollView *scroller;
 @property (nonatomic,strong)ViewController *prevController;
