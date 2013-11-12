@@ -69,6 +69,7 @@
     [cnt dismissViewControllerAnimated:YES completion:^{
         NSLog(@"canceled");
         AudioServicesPlaySystemSound(CLOSELIBRARYSOUNDNUM);//iphoneシステムサウンド
+            [[[[accsesser superview] superview] viewWithTag:[accsesser superview].hash] removeFromSuperview];
     }];
     
 }
