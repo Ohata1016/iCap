@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+#import "ViewController.h"
 
-@interface IcImageView : UIImageView
+@interface IcImageView : UIImageView<GKPeerPickerControllerDelegate, GKSessionDelegate>{
+    
+    ViewController *vc;
+}
+
+@property (nonatomic,strong)ViewController *vc;
 
 @end

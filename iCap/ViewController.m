@@ -12,6 +12,7 @@
 #import "SuperView.h"
 #import "EffectSoundBox.h"
 #import "PhotoLibraryAccesser.h"
+#import "IcImageView.h"
 
 @implementation ViewController
 {
@@ -32,7 +33,12 @@
     
     int canvasViewControllerNumber;//viewControllerの個体識別番号
     
+
 }
+
+@synthesize session = session_;
+@synthesize peerID = peerID_;
+
 
 - (void)viewDidLoad
 {
@@ -57,15 +63,56 @@
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
-    if(self.albumMusicArray)
+    if(self.albumMusicArray){
         [self addMusicImage:self.albumMusicArray];
+    }
     
     
 ///    [self.view addSubview:[_scroller getSubview]];
     _scroller.delegate = self;
 
     self.view = self.scroller;
+    
+    // Bluetooth btn
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame = CGRectMake(50, 50, 100, 30);
+    [btn setTitle:@"connect" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(connect:) forControlEvents:UIControlEventTouchDown];
+    [self.scroller.getSubview addSubview:btn];
 }
+
+// 接続先の検索
+- (IBAction)connect:(id)sender
+{
+    NSLog(@"call connect");
+    GKPeerPickerController* picker = [[GKPeerPickerController alloc] init];
+    picker.delegate = self;
+    picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
+    [picker show];
+}
+
+// 接続先の指定
+- (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session
+{
+    self.peerID = peerID;
+    self.session = session;
+    session.delegate = self;
+    [session setDataReceiveHandler:self withContext:nil];
+    picker.delegate = nil;
+    [picker dismiss];
+    //[picker autorelease];
+}
+
+// 受信
+- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession:(GKSession *)session context:(void *)context
+{
+    NSLog(@"received image");
+    UIImage *reImg = [UIImage imageWithData:data];
+    IcImageView *icImg = [[IcImageView alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
+    icImg.image = reImg;
+    [self.scroller.getSubview addSubview:icImg];
+}
+
 
 -(void)setCanvasViewControllerNumber:(int)number{
     canvasViewControllerNumber = number;

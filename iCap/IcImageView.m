@@ -9,8 +9,11 @@
 #import "IcImageView.h"
 #import "SuperView.h"
 #import "MyScrollView.h"
+#import "ViewController.h"
 
 @implementation IcImageView
+
+@synthesize vc;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -44,7 +47,15 @@
 }
 
 -(void)handleSingleDoubleTap:(UITapGestureRecognizer*)sender{
-    
+    GKSession *session =  vc.session;
+    NSString *peerID = vc.peerID;
+    NSError* error = nil;
+    NSData* data = UIImageJPEGRepresentation(self.image, 0.5);
+    [session sendData:data toPeers:[NSArray arrayWithObject:peerID] withDataMode:GKSendDataReliable error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    NSLog(@"send image");
 }
 
 -(SuperView *)getSuperview{
@@ -105,6 +116,8 @@
         movePoint.y = self.frame.size.height/2;
     return movePoint;
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

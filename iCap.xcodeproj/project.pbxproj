@@ -43,6 +43,7 @@
 		67B38B0117CB334D006B9683 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B38B0017CB334D006B9683 /* Icon2.png */; };
 		67B38B0317CB3353006B9683 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67B38B0217CB3353006B9683 /* Icon.png */; };
 		67DDC3F218236E3C00BD0BD8 /* IcImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC3F118236E3C00BD0BD8 /* IcImageView.m */; };
+		FAB568421833CCA2002FB1BA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB568411833CCA2002FB1BA /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		67B38B0217CB3353006B9683 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		67DDC3F018236E3C00BD0BD8 /* IcImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcImageView.h; sourceTree = "<group>"; };
 		67DDC3F118236E3C00BD0BD8 /* IcImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcImageView.m; sourceTree = "<group>"; };
+		FAB568411833CCA2002FB1BA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB568421833CCA2002FB1BA /* GameKit.framework in Frameworks */,
 				678AE10217CB33D6005FF726 /* AudioToolbox.framework in Frameworks */,
 				678AE10017CB33CD005FF726 /* MediaPlayer.framework in Frameworks */,
 				678AE0FE17CB33C1005FF726 /* QuartzCore.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		6786362017CB2ECC00CE573C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAB568411833CCA2002FB1BA /* GameKit.framework */,
 				678AE10117CB33D6005FF726 /* AudioToolbox.framework */,
 				678AE0FF17CB33CD005FF726 /* MediaPlayer.framework */,
 				678AE0FD17CB33C1005FF726 /* QuartzCore.framework */,

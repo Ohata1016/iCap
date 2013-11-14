@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <GameKit/GameKit.h>
 #import "APPDelegate.h"
 #import "MyScrollView.h"
 #import "CommonLibrary.h"
@@ -16,13 +17,25 @@
 #define OPENLIBRARYSOUNDNUM 1100//iphoneシステムサウンドの番号
 #define CLOSELIBRARYSOUNDNUM 1101
 
-@interface ViewController : UIViewController<MPMediaPickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NSCoding,MyScrollViewDelegate>
+@interface ViewController : UIViewController<GKPeerPickerControllerDelegate, GKSessionDelegate, MPMediaPickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NSCoding,MyScrollViewDelegate>{
+    
+    GKSession* session_;
+    NSString* peearID_;
+}
 
 @property (nonatomic,strong)MyScrollView *scroller;
 @property (nonatomic,strong)ViewController *prevController;
 @property (nonatomic,strong)NSMutableArray *albumMusicArray;
 @property  int imageTag;
+
+@property (nonatomic, retain) GKSession* session;
+@property (nonatomic, retain) NSString* peerID;
+
+- (IBAction)connect:(id)sender;
+
+
 -(void)readSaveData;
 -(void)addMusicImage:(NSMutableArray *)array;
 -(void)setCanvasViewControllerNumber:(int)number;
+
 @end

@@ -99,6 +99,7 @@
      view.delegate = self;*/
 
     IcImageView *img = [[IcImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    img.vc = cnt;
     img.image = i_image;
     
     [cnt.scroller.getSubview addSubview:img];
