@@ -1,17 +1,17 @@
 //
-//  IcImageView.m
+//  iObject.m
 //  iCap
 //
-//  Created by 大畑 貴史 on 2013/11/01.
+//  Created by 大畑 貴史 on 2013/11/12.
 //  Copyright (c) 2013年 大畑 貴史. All rights reserved.
 //
 
-#import "IcImageView.h"
+#import "iObject.h"
 #import "SuperView.h"
 #import "MyScrollView.h"
 #import "ViewController.h"
 
-@implementation IcImageView
+@implementation iObject
 
 @synthesize vc;
 
@@ -19,15 +19,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self addPanGesture];
         self.userInteractionEnabled = YES;
         [self becomeFirstResponder];
         [self addSingleFingerTapGestures];
-        [self addPanGesture];
-        // Initialization code
+        
     }
     return self;
 }
-
 
 -(void)addSingleFingerTapGestures{
     UITapGestureRecognizer *singleFingerDoubleTap;
@@ -117,14 +116,5 @@
     return movePoint;
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

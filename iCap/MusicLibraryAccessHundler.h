@@ -1,8 +1,8 @@
 //
-//  PhotoLivraryAccesser.h
+//  MusicLibraryAccesser.h
 //  iCap
 //
-//  Created by 大畑 貴史 on 2013/10/29.
+//  Created by 大畑 貴史 on 2013/11/19.
 //  Copyright (c) 2013年 大畑 貴史. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 #import "ViewController.h"
 #import "AccsessHundler.h"
 
-@interface PhotoLibraryAccessHundler : AccsessHundler
-
+@interface MusicLibraryAccessHundler : AccsessHundler
+    
 @end

@@ -14,7 +14,7 @@
 -(void)changeViewController:(NSMutableArray *)cnt;
 @end
 @interface MyScrollView : UIScrollView<NSCoding>
-@property (nonatomic, assign) id<MyScrollViewDelegate> delegate;
+@property (nonatomic, assign) id<MyScrollViewDelegate, UIScrollViewDelegate> delegate;
 // デリゲートメソッドを呼ぶメソッド
 - (void)callChangeViewController:(NSMutableArray *)cnt;
 -(void)addMusicImage:(MusicImage*)image;

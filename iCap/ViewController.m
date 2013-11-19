@@ -11,8 +11,13 @@
 #import "MusicSaveData.h"
 #import "SuperView.h"
 #import "EffectSoundBox.h"
+
 #import "PhotoLibraryAccesser.h"
 #import "IcImageView.h"
+
+#import "PhotoLibraryAccessHundler.h"
+#import "MusicLibraryAccessHundler.h"
+
 
 @implementation ViewController
 {
@@ -56,7 +61,7 @@
     [self addDoubleFingerTaoGesture];
     [self addLeftSwipeGesture];
     [self addRightSwipeGesture];
-    [self addRotationGesture];
+//    [self addRotationGesture];
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     effectSoundBox = [[EffectSoundBox alloc] init];
@@ -306,21 +311,30 @@
 
 -(void)singleTapAction:(UIGestureRecognizer *)sender{
     
-    //大本のimageを追加する
-    UIImageView *img = [[UIImageView alloc] init];
-    CGPoint p = [sender locationInView:scrollerView];
-    img.frame = CGRectMake(p.x, p.y, 100, 100);
-    img.userInteractionEnabled = YES;
-    //ライブラリアクセス用のクラス
-    img.tag = img.hash;
-    PhotoLibraryAccesser *accesser = [[PhotoLibraryAccesser alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [accesser setViewController:self];
-    [img addSubview:accesser];
-    [self.scroller.getSubview addSubview:img];
-//    [img addSubview:accesser];
-    //ミュージックライブラリ用の
-
-
+    if([self.scroller.getSubview viewWithTag:1] ==nil){
+        //大本のimageを追加する
+        UIImageView *img = [[UIImageView alloc] init];
+        CGPoint p = [sender locationInView:scrollerView];
+        img.frame = CGRectMake(p.x, p.y, 100, 100);
+        img.userInteractionEnabled = YES;
+        img.tag = 1;
+        
+        //ライブラリアクセス用のアイコン追加
+        AccsessHundler *accesser = [[PhotoLibraryAccessHundler alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [accesser setViewController:self];
+        
+        //ミュージックライブラリアクセス用のアイコン追加
+        AccsessHundler *musicAccesser = [[MusicLibraryAccessHundler alloc] initWithFrame:CGRectMake(0, 20, 20, 20)];
+        [musicAccesser setViewController:self];
+        
+        
+        //scrollerに追加
+        [img addSubview:accesser];
+        [img addSubview:musicAccesser];
+        [self.scroller.getSubview addSubview:img];
+    }else{
+        [[self.scroller.getSubview viewWithTag:1] removeFromSuperview];
+    }
 }
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)sender{//ダブルタップ時の処理　フォトアルバムへアクセス　壁紙を設定
@@ -382,21 +396,6 @@
 
 - (void)useImage:(UIImage*)i_image
 {
-   /* MyImageView *view =[[MyImageView alloc] initWithImage:i_image];
-    MyLabel *textView = [[MyLabel alloc] initWithFrame:CGRectMake(view.frame.origin.x,view.frame.origin.y,
-                                                                  view.frame.size.width,view.frame.size.height/4)];
-    textView.text = @"TEST";
-    textView.tag = imageTag + TEXT;
-    textView.backgroundColor = [UIColor clearColor];
-    
-    view.userInteractionEnabled = YES;
-    view.tag = imageTag;
-    NSLog(@"tag = %d",view.tag);
-    imageTag+=4;
-    [view addSubview:textView];
-    [_scroller addSubview:view];
-    
-    view.delegate = self;*/
     
     NSLog(@"get image width:%f height:%f",i_image.size.width,i_image.size.height);
     

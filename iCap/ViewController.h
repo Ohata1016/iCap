@@ -23,6 +23,7 @@
     NSString* peearID_;
 }
 
+
 @property (nonatomic,strong)MyScrollView *scroller;
 @property (nonatomic,strong)ViewController *prevController;
 @property (nonatomic,strong)NSMutableArray *albumMusicArray;
@@ -37,5 +38,10 @@
 -(void)readSaveData;
 -(void)addMusicImage:(NSMutableArray *)array;
 -(void)setCanvasViewControllerNumber:(int)number;
+-(void)updateImageTag;
+-(BOOL)checkDeleter;
+-(BOOL)deleteSelectFrame;
+
+
 
 @end

@@ -11,7 +11,6 @@
 #import "ViewController.h"
 
 @interface IcImageView : UIImageView<GKPeerPickerControllerDelegate, GKSessionDelegate>{
-    
     ViewController *vc;
 }
 
