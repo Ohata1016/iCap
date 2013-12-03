@@ -13,7 +13,7 @@
 #import "EffectSoundBox.h"
 
 #import "PhotoLibraryAccesser.h"
-#import "IcImageView.h"
+#import "iImageObject.h"
 
 #import "PhotoLibraryAccessHundler.h"
 #import "MusicLibraryAccessHundler.h"
@@ -112,9 +112,9 @@
 {
     NSLog(@"received image");
     UIImage *reImg = [UIImage imageWithData:data];
-    IcImageView *icImg = [[IcImageView alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
-    icImg.image = reImg;
-    [self.scroller.getSubview addSubview:icImg];
+//    IcImageView *icImg = [[IcImageView alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
+  //  icImg.image = reImg;
+ //   [self.scroller.getSubview addSubview:icImg];
 }
 
 

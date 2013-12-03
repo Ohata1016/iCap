@@ -38,7 +38,7 @@
         [hundler callLibrary:self];
     }
 }
-
+/*
 - (void)drawRect:(CGRect)rect
 {
 
@@ -56,7 +56,7 @@
      [view addSubview:textView];
      [_scroller addSubview:view];
      
-     view.delegate = self;*/
+     view.delegate = self;
 
     IcImageView *img = [[IcImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     img.vc = cnt;
@@ -71,6 +71,7 @@
     NSLog(@"%@",[[accsesser superview] superview]);
     [[[[accsesser superview] superview] viewWithTag:[accsesser superview].hash] removeFromSuperview];
 }
+*/
 
 
 @end

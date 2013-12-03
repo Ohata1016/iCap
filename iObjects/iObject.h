@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface iObject : UIImageView
+@property (nonatomic,strong)ViewController *vc;
 -(void)handleSingleTap:(UIGestureRecognizer *)sender;
 -(void)handleSingleDoubleTap:(UITapGestureRecognizer *)sender;
 @end
