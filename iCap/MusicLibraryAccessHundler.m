@@ -7,11 +7,11 @@
 //
 
 #import "MusicLibraryAccessHundler.h"
-
-
+#import "MusicLibraryAccesser.h"
+#import "ViewController.h"
 
 @implementation MusicLibraryAccessHundler{
-    // PhotoLibraryAccessHundler *hundler;
+    MusicLibraryAccesser  *hundler;
 }
     
 - (id)initWithFrame:(CGRect)frame{
@@ -28,14 +28,15 @@
     
 -(void)actionSingleTap:(UITapGestureRecognizer *)sender{
     if(sender.state == UIGestureRecognizerStateEnded){
-        //hundler = [[PhotoLibraryAccessHundler alloc] initWithController:cnt];
-        //[hundler callPhotoLibrary:self];
-        //sorcetype:フォトアルバム
+        hundler = [[MusicLibraryAccesser alloc] initWithController:[super getViewController]];
+        [hundler callLibrary:self];
+//        sorcetype:フォトアルバム
     }
 }
     
-    
-    
+
+
+
     
     
     

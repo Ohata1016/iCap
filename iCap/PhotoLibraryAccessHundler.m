@@ -21,7 +21,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        // Initialization code
+
+        
         self.image = [UIImage imageNamed:@"ImageIcon.gif"];
         self.userInteractionEnabled = YES;
         [self becomeFirstResponder];
@@ -35,7 +36,6 @@
     if(sender.state == UIGestureRecognizerStateEnded){
         hundler = [[PhotoLibraryAccesser alloc] initWithController:[super getViewController]];
         [hundler callLibrary:self];
-        //sorcetype:フォトアルバム
     }
 }
 

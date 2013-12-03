@@ -29,7 +29,6 @@
     BOOL makeAlbum;
     
     AppDelegate *appDelegate;
-    UITextField *textField;
     
     EffectSoundBox *effectSoundBox;
     SuperView *scrollerView;
@@ -311,6 +310,11 @@
 
 -(void)singleTapAction:(UIGestureRecognizer *)sender{
     
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5f];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView commitAnimations];
+    
     if([self.scroller.getSubview viewWithTag:1] ==nil){
         //大本のimageを追加する
         UIImageView *img = [[UIImageView alloc] init];
@@ -321,12 +325,13 @@
         
         //ライブラリアクセス用のアイコン追加
         AccsessHundler *accesser = [[PhotoLibraryAccessHundler alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        accesser.alpha = 1.0f;
         [accesser setViewController:self];
         
         //ミュージックライブラリアクセス用のアイコン追加
         AccsessHundler *musicAccesser = [[MusicLibraryAccessHundler alloc] initWithFrame:CGRectMake(0, 20, 20, 20)];
         [musicAccesser setViewController:self];
-        
+        musicAccesser.alpha = 1.0f;
         
         //scrollerに追加
         [img addSubview:accesser];
@@ -537,6 +542,7 @@ didPickMediaItems: (MPMediaItemCollection *) collection
                                                        delegate:self
                                               cancelButtonTitle:@"cancel"
                                               otherButtonTitles:@"OK", nil];
+    UITextField *textField;
     // UITextFieldの生成
     textField = [[UITextField alloc] initWithFrame:CGRectMake(12, 45, 260, 25)];
     textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -560,15 +566,10 @@ didPickMediaItems: (MPMediaItemCollection *) collection
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {//アルバム作成時のためのアラートビューの表示　作成中　　
     // OKが選択された場合
+    UITextField *textField;
     if (buttonIndex == 1) {
         // テキストフィールドに一文字以上入力されていれば
         if ([textField.text length]){//アルバム作成時の処理
-//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(img.bounds.origin.x,img.bounds.origin.y,img.frame.size.width,img.frame.size.height/2)];
-            
-  //          label.text = textField.text;
-    //        label.backgroundColor = [UIColor clearColor];
-      //      label.numberOfLines = 2;
-//            label.tag = self.tag + ALBUMLABEL;
             NSLog(@"albumlabel:%@",textField.text);
         }else{
             return;
@@ -610,33 +611,6 @@ didPickMediaItems: (MPMediaItemCollection *) collection
     return label;
 }
 
-//viewイメージをそのまま復元する　復元に時間がかかるため廃棄
-/*-(void)readSerialData{
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.dat"];
-    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    NSLog(@"load object:%@",[array objectAtIndex:0]);
-
-//    MusicImage *view = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    MusicImage *view = [array objectAtIndex:0];
-    if (view) {
-        NSMutableArray *saveData =[self.scroller getMusicSaveData];
-        for(int i=0; i<[array count];i++){
-            MusicImage *view = [array objectAtIndex:i];
-            UILabel *label = [self makeLabel:view.bounds withString:@"test"];
-            [view addSubview:label];
-            
-            view.tag = self.imageTag;
-            [self updataTag];
-            [self.scroller addMusicImage:view];
-        }
-//        [(MPMediaItem *)[view getMusicList] valueForProperty:MPMediaItemPropertyTitle]
-        
-        
-    } else {
-        NSLog(@"%@", @"データが存在しません。");
-    }
-}*/
-
 -(void)serializeViewData{
     NSString *fileName = @"Documents/ViewData";
     NSString *extention = @".dat";
@@ -652,8 +626,8 @@ didPickMediaItems: (MPMediaItemCollection *) collection
     }else{
         NSLog(@"壁紙の保存に失敗");        
     }
-    
 }
+
 -(void)readViewData{
     NSString *fileName = @"Documents/ViewData";
     NSString *extention = @".dat";
@@ -772,14 +746,14 @@ didPickMediaItems: (MPMediaItemCollection *) collection
  */
 - (void)changeViewController:(NSMutableArray *)cnt
 {
-    NSLog(@"cnt:%@",cnt);
-    ViewController *test = (ViewController *)cnt;
-    NSLog(@"test : %@",test);
-    NSLog(@"test scroller:%@",test.scroller);
     ViewController *nextController = (ViewController *)cnt;
     nextController.prevController = self;
     [appDelegate addController:(ViewController *)nextController];
 }
-    
+
+-(int)getImageTag{
+    return self.imageTag;
+}
+
 @end
 

@@ -41,7 +41,8 @@
 -(void)updateImageTag;
 -(BOOL)checkDeleter;
 -(BOOL)deleteSelectFrame;
-
+-(void)updateTag;
+-(int)getImageTag;
 
 
 @end

@@ -60,7 +60,6 @@
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)i_picker
 {
     [super.getViewController dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"canceled");
         AudioServicesPlaySystemSound(CLOSELIBRARYSOUNDNUM);//iphoneシステムサウンド
         [[[[accsesser superview] superview] viewWithTag:1] removeFromSuperview];
     }];
@@ -81,9 +80,6 @@
     
     [super.getViewController.scroller.getSubview addSubview:img];
     
-    //  SuperView *view = [_scroller getSubview];
-    // view.image = i_image;
-    //    [self serializeViewData];
     [[[[accsesser superview] superview] viewWithTag:1] removeFromSuperview];
     
 }
