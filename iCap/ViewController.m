@@ -14,6 +14,8 @@
 
 #import "PhotoLibraryAccesser.h"
 #import "iImageObject.h"
+#import "SaveDataLoader.h"
+#import "SaveDataSerializer.h"
 
 #import "PhotoLibraryAccessHundler.h"
 #import "MusicLibraryAccessHundler.h"
@@ -21,6 +23,7 @@
 
 @implementation ViewController
 {
+    
     UISwipeGestureRecognizer *rightSwipeGesture;
     UISwipeGestureRecognizer *leftSwipeGesture;
     UITapGestureRecognizer *singleFingerTap;
@@ -33,11 +36,10 @@
     EffectSoundBox *effectSoundBox;
     SuperView *scrollerView;
     
-    NSMutableArray *albumViewControllerList;//アルバムのviewcontrollerをリスト管理する　予定
+    NSMutableArray *albumViewControllerList;//アルバムのviewcontrollerをリスト管理する
     
     int canvasViewControllerNumber;//viewControllerの個体識別番号
     
-
 }
 
 @synthesize session = session_;
@@ -182,8 +184,11 @@
 -(void)readSaveData{
     //保存していたデータを読み込む
     NSLog(@"read save data");
-    [self readViewData];//壁紙情報を読み込む そのままスクローラに貼り付け
-    [self readSerialData];//楽曲情報を読み込み　そのまま貼り付け
+    SaveDataLoader *loader = [[SaveDataLoader alloc] init];
+    
+    
+    [loader readViewData:self];//壁紙情報を読み込む そのままスクローラに貼り付け
+    [loader readSerialData:self];//楽曲情報を読み込み　そのまま貼り付け
 }
 
 
@@ -401,12 +406,12 @@
 
 - (void)useImage:(UIImage*)i_image
 {
-    
-    NSLog(@"get image width:%f height:%f",i_image.size.width,i_image.size.height);
-    
     SuperView *view = [_scroller getSubview];
+    SaveDataSerializer *serializer = [[SaveDataSerializer alloc] init];
+    
     view.image = i_image;
-    [self serializeViewData];
+    
+    [serializer serializeViewData:self];
     
 }
 
@@ -496,7 +501,7 @@ didPickMediaItems: (MPMediaItemCollection *) collection
     }else{
         for (MPMediaItem *item in collection.items) {
             
-            int extent = [[item valueForProperty:MPMediaItemPropertyPlayCount] integerValue];
+            long extent = [[item valueForProperty:MPMediaItemPropertyPlayCount] integerValue];
             imageFrame = CGRectMake(imageFrame.origin.x,imageFrame.origin.y,DEFAULTSIZE + +extent/10,DEFAULTSIZE + +extent/10);
             labelFrame = CGRectMake(0,0,DEFAULTSIZE + +extent/10,DEFAULTSIZE + +extent/10);
             
@@ -611,89 +616,7 @@ didPickMediaItems: (MPMediaItemCollection *) collection
     return label;
 }
 
--(void)serializeViewData{
-    NSString *fileName = @"Documents/ViewData";
-    NSString *extention = @".dat";
-    NSString *fileNum = [NSString stringWithFormat:@"%d",self.view.tag];
-    
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@_%@",fileName,fileNum,extention]];
-    NSLog(@"save file path:%@",filePath);
-    BOOL successful;
-    
-    successful = [NSKeyedArchiver archiveRootObject:[_scroller getSubview].image  toFile:filePath];
-    if(successful){
-        NSLog(@"壁紙の保存に成功");
-    }else{
-        NSLog(@"壁紙の保存に失敗");        
-    }
-}
 
--(void)readViewData{
-    NSString *fileName = @"Documents/ViewData";
-    NSString *extention = @".dat";
-    NSString *fileNum = [NSString stringWithFormat:@"%d",self.view.tag];
-
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@_%@",fileName,fileNum,extention]];
-    NSLog(@"load file path:%@",filePath);
-    UIImage *img = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    
-    if(img){
-        [_scroller getSubview].image = img;
-        NSLog(@"壁紙の読み込みに成功");
-    }else{
-        NSLog(@"壁紙の読み込みに失敗");
-    }
-}
-
--(void)readSerialData{
-    //serialData読み込み
-    NSString *fileName = @"Documents/data";
-    NSString *extention = @".dat";
-    NSString *fileNum = [NSString stringWithFormat:@"%d",self.view.tag];
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@_%@",fileName,fileNum,extention]];
-    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-
-    //    MusicImage *view = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-
-    if (array) {
-        for(int i=0; i<[array count];i++){
-            MusicSaveData *loadData = [array objectAtIndex:i];
-            MPMediaItem *item = (MPMediaItem *)[loadData.musicArray objectAtIndex:0];
-            
-            //ラベルの作成
-            CGRect labelFrame = CGRectMake(0,loadData.bounds.size.height/2,loadData.bounds.size.width,loadData.bounds.size.height/2);
-            UILabel *label = [self makeLabel:labelFrame withString:[item valueForProperty:MPMediaItemPropertyTitle]];
-
-            //アルバムラベルの作成
-            CGRect albumLabelFrame = CGRectMake(0,0,loadData.bounds.size.width,loadData.bounds.size.height/2);
-            UILabel *albumLabel = [self makeLabel:albumLabelFrame withString:loadData.albumName];
-            albumLabel.tag = self.imageTag + ALBUMLABEL;
-            
-            
-            //アートワークからImage作成
-            MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
-            
-            MusicImage *musicImage = [[MusicImage alloc] initWithImage:[artwork imageWithSize:CGSizeMake(DEFAULTSIZE,DEFAULTSIZE)]];
-            if(musicImage.image == nil)
-                musicImage.image = [UIImage imageNamed:@"albumDefault.jpg"];
-            
-            musicImage.tag = self.imageTag;
-            //queryの追加
-            [musicImage addMusic:loadData.musicArray];
-            //frameの設定
-            musicImage.frame = loadData.bounds;
-            //ラベルの貼り付け
-            [musicImage addSubview:label];
-            [musicImage addSubview:albumLabel];
-            musicImage.albumName = albumLabel.text;
-            [musicImage serializer];
-            [self.scroller addMusicImage:musicImage];
-            self.imageTag +=DELETER+1;
-        }
-    } else {
-        NSLog(@"%@", @"データが存在しません。");
-    }
-}
 
 -(void)addMusicImage:(NSMutableArray *)array{
     NSLog(@"add music images to ViewController");
@@ -703,7 +626,7 @@ didPickMediaItems: (MPMediaItemCollection *) collection
     
     for (int i = 0;i<[array count];i++) {
         MPMediaItem *item = (MPMediaItem *)[array objectAtIndex:i];
-        int extent = [[item valueForProperty:MPMediaItemPropertyPlayCount] integerValue];
+        long extent = [[item valueForProperty:MPMediaItemPropertyPlayCount] integerValue];
         imageFrame = CGRectMake(imageFrame.origin.x,imageFrame.origin.y,DEFAULTSIZE + +extent/10,DEFAULTSIZE + +extent/10);
         labelFrame = CGRectMake(0,0,DEFAULTSIZE + +extent/10,DEFAULTSIZE + +extent/10);
         

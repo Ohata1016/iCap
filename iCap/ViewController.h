@@ -21,7 +21,9 @@
     
     GKSession* session_;
     NSString* peearID_;
+    
 }
+
 
 
 @property (nonatomic,strong)MyScrollView *scroller;
@@ -34,7 +36,7 @@
 
 - (IBAction)connect:(id)sender;
 
-
+-(UILabel *)makeLabel:(CGRect)labelFrame withString:(NSString *)text;
 -(void)readSaveData;
 -(void)addMusicImage:(NSMutableArray *)array;
 -(void)setCanvasViewControllerNumber:(int)number;

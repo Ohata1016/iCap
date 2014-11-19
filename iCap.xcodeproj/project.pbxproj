@@ -17,6 +17,8 @@
 		674358B0184DB0F900FEC97F /* iMusicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 674358A6184DB0F900FEC97F /* iMusicObject.m */; };
 		674358B1184DB0F900FEC97F /* MusicLibraryAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 674358A8184DB0F900FEC97F /* MusicLibraryAccesser.m */; };
 		674358B2184DB0F900FEC97F /* MusicLibraryAccessHundler.m in Sources */ = {isa = PBXBuildFile; fileRef = 674358AA184DB0F900FEC97F /* MusicLibraryAccessHundler.m */; };
+		674877D31A1C89E40097DBEC /* SaveDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 674877D21A1C89E40097DBEC /* SaveDataLoader.m */; };
+		674877D51A1C93240097DBEC /* SaveDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 674877D41A1C93240097DBEC /* SaveDataSerializer.m */; };
 		67779A28181FBB160014DDC3 /* PhotoLibraryAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */; };
 		67779A2B181FBC150014DDC3 /* PhotoLibraryAccessHundler.m in Sources */ = {isa = PBXBuildFile; fileRef = 67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */; };
 		6786362217CB2ECC00CE573C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6786362117CB2ECC00CE573C /* UIKit.framework */; };
@@ -81,6 +83,10 @@
 		674358A8184DB0F900FEC97F /* MusicLibraryAccesser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicLibraryAccesser.m; sourceTree = "<group>"; };
 		674358A9184DB0F900FEC97F /* MusicLibraryAccessHundler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicLibraryAccessHundler.h; sourceTree = "<group>"; };
 		674358AA184DB0F900FEC97F /* MusicLibraryAccessHundler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicLibraryAccessHundler.m; sourceTree = "<group>"; };
+		674877D21A1C89E40097DBEC /* SaveDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveDataLoader.m; sourceTree = "<group>"; };
+		674877D41A1C93240097DBEC /* SaveDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveDataSerializer.m; sourceTree = "<group>"; };
+		674877D61A1C94720097DBEC /* SaveDataLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveDataLoader.h; sourceTree = "<group>"; };
+		674877D71A1C94950097DBEC /* SaveDataSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveDataSerializer.h; sourceTree = "<group>"; };
 		67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryAccesser.h; sourceTree = "<group>"; };
 		67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryAccesser.m; sourceTree = "<group>"; };
 		67779A29181FBC150014DDC3 /* PhotoLibraryAccessHundler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryAccessHundler.h; sourceTree = "<group>"; };
@@ -176,6 +182,10 @@
 			children = (
 				67B38AEB17CB3313006B9683 /* MusicSaveData.h */,
 				67B38AEC17CB3313006B9683 /* MusicSaveData.m */,
+				674877D21A1C89E40097DBEC /* SaveDataLoader.m */,
+				674877D61A1C94720097DBEC /* SaveDataLoader.h */,
+				674877D41A1C93240097DBEC /* SaveDataSerializer.m */,
+				674877D71A1C94950097DBEC /* SaveDataSerializer.h */,
 			);
 			name = saveutil;
 			sourceTree = "<group>";
@@ -467,8 +477,10 @@
 				67779A28181FBB160014DDC3 /* PhotoLibraryAccesser.m in Sources */,
 				674358AD184DB0F900FEC97F /* Accesser.m in Sources */,
 				67779A2B181FBC150014DDC3 /* PhotoLibraryAccessHundler.m in Sources */,
+				674877D51A1C93240097DBEC /* SaveDataSerializer.m in Sources */,
 				674358B0184DB0F900FEC97F /* iMusicObject.m in Sources */,
 				674358AF184DB0F900FEC97F /* iImageObject.m in Sources */,
+				674877D31A1C89E40097DBEC /* SaveDataLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
