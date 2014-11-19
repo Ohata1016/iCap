@@ -171,6 +171,78 @@
 			name = viewcontroller;
 			sourceTree = "<group>";
 		};
+		674877CD1A1C887D0097DBEC /* saveutil */ = {
+			isa = PBXGroup;
+			children = (
+				67B38AEB17CB3313006B9683 /* MusicSaveData.h */,
+				67B38AEC17CB3313006B9683 /* MusicSaveData.m */,
+			);
+			name = saveutil;
+			sourceTree = "<group>";
+		};
+		674877CE1A1C88AC0097DBEC /* icapobjects */ = {
+			isa = PBXGroup;
+			children = (
+				674358A0184DB0F900FEC97F /* Accesser.m */,
+				674358A1184DB0F900FEC97F /* AccsessHundler.h */,
+				674358A2184DB0F900FEC97F /* AccsessHundler.m */,
+				674358A3184DB0F900FEC97F /* iImageObject.h */,
+				674358A4184DB0F900FEC97F /* iImageObject.m */,
+				6743589C184DB0E500FEC97F /* Accesser.h */,
+				67B38ADA17CB32C9006B9683 /* AllDeleter.h */,
+				67B38ADB17CB32C9006B9683 /* AllDeleter.m */,
+				67B38AE117CB32DB006B9683 /* Deleter.h */,
+				67B38AE217CB32DB006B9683 /* Deleter.m */,
+				67B38AE917CB3313006B9683 /* MusicImage.h */,
+				67B38AEA17CB3313006B9683 /* MusicImage.m */,
+				67B38AF217CB332A006B9683 /* RedFrame.h */,
+				67B38AF317CB332A006B9683 /* RedFrame.m */,
+				67779A29181FBC150014DDC3 /* PhotoLibraryAccessHundler.h */,
+				67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */,
+				67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */,
+				67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */,
+				674358A5184DB0F900FEC97F /* iMusicObject.h */,
+				674358A6184DB0F900FEC97F /* iMusicObject.m */,
+				674358A7184DB0F900FEC97F /* MusicLibraryAccesser.h */,
+				674358A8184DB0F900FEC97F /* MusicLibraryAccesser.m */,
+				674358A9184DB0F900FEC97F /* MusicLibraryAccessHundler.h */,
+				674358AA184DB0F900FEC97F /* MusicLibraryAccessHundler.m */,
+				6743589A184DB0E500FEC97F /* iObject.h */,
+				6743589B184DB0E500FEC97F /* iObject.m */,
+			);
+			name = icapobjects;
+			sourceTree = "<group>";
+		};
+		674877CF1A1C88E40097DBEC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				67B38AEF17CB3320006B9683 /* MyScrollView.h */,
+				67B38AF017CB3320006B9683 /* MyScrollView.m */,
+				67B38AF717CB332A006B9683 /* SuperView.h */,
+				67B38AF817CB332A006B9683 /* SuperView.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		674877D01A1C88FF0097DBEC /* soundutil */ = {
+			isa = PBXGroup;
+			children = (
+				67B38AE617CB32EB006B9683 /* EffectSoundBox.h */,
+				67B38AE717CB32EB006B9683 /* EffectSoundBox.m */,
+			);
+			name = soundutil;
+			sourceTree = "<group>";
+		};
+		674877D11A1C89150097DBEC /* img */ = {
+			isa = PBXGroup;
+			children = (
+				67B38AE417CB32E1006B9683 /* deleter.png */,
+				671A97D617CB30CF007AB316 /* albumDefault.jpg */,
+				67B38AF417CB332A006B9683 /* redFrame.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		6786361517CB2ECC00CE573C = {
 			isa = PBXGroup;
 			children = (
@@ -212,47 +284,15 @@
 		6786362717CB2ECC00CE573C /* iCap */ = {
 			isa = PBXGroup;
 			children = (
+				674877D11A1C89150097DBEC /* img */,
+				674877D01A1C88FF0097DBEC /* soundutil */,
+				674877CF1A1C88E40097DBEC /* views */,
+				674877CE1A1C88AC0097DBEC /* icapobjects */,
+				674877CD1A1C887D0097DBEC /* saveutil */,
 				674877CB1A1C87D70097DBEC /* viewcontroller */,
-				674358A0184DB0F900FEC97F /* Accesser.m */,
-				674358A1184DB0F900FEC97F /* AccsessHundler.h */,
-				674358A2184DB0F900FEC97F /* AccsessHundler.m */,
-				674358A3184DB0F900FEC97F /* iImageObject.h */,
-				674358A4184DB0F900FEC97F /* iImageObject.m */,
-				674358A5184DB0F900FEC97F /* iMusicObject.h */,
-				674358A6184DB0F900FEC97F /* iMusicObject.m */,
-				674358A7184DB0F900FEC97F /* MusicLibraryAccesser.h */,
-				674358A8184DB0F900FEC97F /* MusicLibraryAccesser.m */,
-				674358A9184DB0F900FEC97F /* MusicLibraryAccessHundler.h */,
-				674358AA184DB0F900FEC97F /* MusicLibraryAccessHundler.m */,
-				6743589A184DB0E500FEC97F /* iObject.h */,
-				6743589B184DB0E500FEC97F /* iObject.m */,
-				6743589C184DB0E500FEC97F /* Accesser.h */,
-				671A97D617CB30CF007AB316 /* albumDefault.jpg */,
-				67B38ADA17CB32C9006B9683 /* AllDeleter.h */,
-				67B38ADB17CB32C9006B9683 /* AllDeleter.m */,
 				67B38ADC17CB32C9006B9683 /* AppDelegate.h */,
 				67B38ADE17CB32D1006B9683 /* AppDelegate.m */,
 				67B38ADF17CB32D1006B9683 /* CommonLibrary.h */,
-				67B38AE117CB32DB006B9683 /* Deleter.h */,
-				67B38AE217CB32DB006B9683 /* Deleter.m */,
-				67B38AE417CB32E1006B9683 /* deleter.png */,
-				67B38AE617CB32EB006B9683 /* EffectSoundBox.h */,
-				67B38AE717CB32EB006B9683 /* EffectSoundBox.m */,
-				67B38AE917CB3313006B9683 /* MusicImage.h */,
-				67B38AEA17CB3313006B9683 /* MusicImage.m */,
-				67B38AEB17CB3313006B9683 /* MusicSaveData.h */,
-				67B38AEC17CB3313006B9683 /* MusicSaveData.m */,
-				67B38AEF17CB3320006B9683 /* MyScrollView.h */,
-				67B38AF017CB3320006B9683 /* MyScrollView.m */,
-				67B38AF217CB332A006B9683 /* RedFrame.h */,
-				67B38AF317CB332A006B9683 /* RedFrame.m */,
-				67B38AF417CB332A006B9683 /* redFrame.png */,
-				67779A29181FBC150014DDC3 /* PhotoLibraryAccessHundler.h */,
-				67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */,
-				67B38AF717CB332A006B9683 /* SuperView.h */,
-				67B38AF817CB332A006B9683 /* SuperView.m */,
-				67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */,
-				67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */,
 				6786363917CB2ECC00CE573C /* MainStoryboard.storyboard */,
 				6786362817CB2ECC00CE573C /* Supporting Files */,
 			);
