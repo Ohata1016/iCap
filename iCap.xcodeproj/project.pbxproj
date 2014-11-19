@@ -162,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		674877CB1A1C87D70097DBEC /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				67B38AF917CB332A006B9683 /* ViewController.h */,
+				67B38AFA17CB332A006B9683 /* ViewController.m */,
+			);
+			name = viewcontroller;
+			sourceTree = "<group>";
+		};
 		6786361517CB2ECC00CE573C = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +212,7 @@
 		6786362717CB2ECC00CE573C /* iCap */ = {
 			isa = PBXGroup;
 			children = (
+				674877CB1A1C87D70097DBEC /* viewcontroller */,
 				674358A0184DB0F900FEC97F /* Accesser.m */,
 				674358A1184DB0F900FEC97F /* AccsessHundler.h */,
 				674358A2184DB0F900FEC97F /* AccsessHundler.m */,
@@ -241,8 +251,6 @@
 				67779A2A181FBC150014DDC3 /* PhotoLibraryAccessHundler.m */,
 				67B38AF717CB332A006B9683 /* SuperView.h */,
 				67B38AF817CB332A006B9683 /* SuperView.m */,
-				67B38AF917CB332A006B9683 /* ViewController.h */,
-				67B38AFA17CB332A006B9683 /* ViewController.m */,
 				67779A26181FBB160014DDC3 /* PhotoLibraryAccesser.h */,
 				67779A27181FBB160014DDC3 /* PhotoLibraryAccesser.m */,
 				6786363917CB2ECC00CE573C /* MainStoryboard.storyboard */,
@@ -321,7 +329,7 @@
 			name = iCapTests;
 			productName = iCapTests;
 			productReference = 6786364417CB2ECC00CE573C /* iCapTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
